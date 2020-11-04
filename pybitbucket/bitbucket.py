@@ -169,7 +169,7 @@ class BitbucketBase(object):
 
     def add_remote_relationship_methods(self, data):
         for name, url in BitbucketBase.links_from(data):
-            if (name not in BitbucketSpecialAction):
+            if (name not in BitbucketSpecialAction.__dict__):
                 setattr(self, name, partial(
                     self.client.remote_relationship,
                     template=url))
